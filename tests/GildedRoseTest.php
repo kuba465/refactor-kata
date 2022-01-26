@@ -2,10 +2,21 @@
 
 use App\GildedRose;
 use App\Item;
+use App\ItemsService;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
+    /**
+     * @var ItemsService
+     */
+    private $itemsService;
+
+    protected function setUp(): void
+    {
+        $this->itemsService = new ItemsService();
+    }
+
     /**
      * @dataProvider itemsProvider
      * @param string $name
@@ -16,7 +27,7 @@ class GildedRoseTest extends TestCase
      */
     public function testUpdateQualityTest($name, $sellIn, $quality, $expectedSellIn, $expectedQuality): void
     {
-        $item = new Item($name, $sellIn, $quality);
+        $item = $this->itemsService->getItem($name, $sellIn, $quality);
 
         $gildedRose = new GildedRose();
         $gildedRose->updateQuality($item);
