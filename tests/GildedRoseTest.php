@@ -1,7 +1,6 @@
 <?php
 
 use App\GildedRose;
-use App\Item;
 use App\ItemsService;
 use PHPUnit\Framework\TestCase;
 
