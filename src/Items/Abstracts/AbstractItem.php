@@ -5,15 +5,15 @@ namespace App\Items\Abstracts;
 abstract class AbstractItem
 {
     public $name;
-    public $sell_in;
+    public $sellIn;
     public $quality;
     protected $maxQuality = 50;
     protected $increase = false;
 
-    public function __construct(string $name, int $sell_in, int $quality)
+    public function __construct(string $name, int $sellIn, int $quality)
     {
         $this->name = $name;
-        $this->sell_in = $sell_in;
+        $this->sellIn = $sellIn;
         $this->quality = $quality;
     }
 
@@ -25,18 +25,18 @@ abstract class AbstractItem
             $this->quality++;
         }
         
-        if ($this->sell_in < 0 && $updateQualityTwice) {
+        if ($this->sellIn < 0 && $updateQualityTwice) {
             $this->updateQuality(false);
         }
     }
 
     public function updateSellIn(): void
     {
-        $this->sell_in--;
+        $this->sellIn--;
     }
 
     public function __toString(): string
     {
-        return "{$this->name}, {$this->sell_in}, {$this->quality}";
+        return "{$this->name}, {$this->sellIn}, {$this->quality}";
     }
 }
