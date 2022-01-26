@@ -2,9 +2,7 @@
 
 namespace App\Items\Abstracts;
 
-use App\Items\Contracts\ItemInterface;
-
-abstract class AbstractItem implements ItemInterface
+abstract class AbstractItem
 {
     public $name;
     public $sell_in;
@@ -19,12 +17,16 @@ abstract class AbstractItem implements ItemInterface
         $this->quality = $quality;
     }
 
-    public function updateQuality(): void
+    public function updateQuality(bool $updateQualityTwice = true): void
     {
         if ($this->quality > 0 && !$this->increase) {
             $this->quality--;
         } elseif ($this->quality < $this->maxQuality && $this->increase) {
             $this->quality++;
+        }
+        
+        if ($this->sell_in < 0 && $updateQualityTwice) {
+            $this->updateQuality(false);
         }
     }
 

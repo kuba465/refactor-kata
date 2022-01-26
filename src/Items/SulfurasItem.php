@@ -6,7 +6,7 @@ use App\Items\Abstracts\AbstractItem;
 
 final class SulfurasItem extends AbstractItem
 {
-    public function updateQuality(): void
+    public function updateQuality(bool $updateQualityTwice = true): void
     {
         $this->quality = 80;
     }
