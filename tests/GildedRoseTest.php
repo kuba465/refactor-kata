@@ -24,7 +24,7 @@ class GildedRoseTest extends TestCase
      * @param int $expectedSellIn
      * @param int $expectedQuality
      */
-    public function testUpdateQualityTest($name, $sellIn, $quality, $expectedSellIn, $expectedQuality): void
+    public function testUpdateQualityTest(string $name, int $sellIn, int $quality, int $expectedSellIn, int $expectedQuality): void
     {
         $item = $this->itemsService->getItem($name, $sellIn, $quality);
 
