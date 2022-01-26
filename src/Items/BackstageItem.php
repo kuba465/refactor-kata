@@ -13,12 +13,13 @@ final class BackstageItem extends AbstractItem
     {
         if ($this->sellIn < 0) {
             $this->quality = 0;
-        } else {
-            parent::updateQuality(false);
-            foreach ($this->daysConditions as $daysCondition) {
-                if ($this->sellIn < $daysCondition) {
-                    parent::updateQuality(false);
-                }
+            return;
+        }
+
+        parent::updateQuality(false);
+        foreach ($this->daysConditions as $daysCondition) {
+            if ($this->sellIn < $daysCondition) {
+                parent::updateQuality(false);
             }
         }
     }
